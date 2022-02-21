@@ -4,5 +4,5 @@ namespace App\Services\Mail;
 
 interface MailServiceInterface {
 
-    public function send();
+    public function send($subject,$message,$mailTo);
 }

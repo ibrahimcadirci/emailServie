@@ -10,7 +10,12 @@ class MailService {
 
 
     public static function send(){
-        $mail           = new self::$services[0];
-        return $mail->send();
+        try {
+            $mail           = new self::$services[0];
+            return $mail->send();
+        } catch (Exception $e) {
+            echo 'Caught exception: '. $e->getMessage() ."\n";
+        }
+
     }
 }
