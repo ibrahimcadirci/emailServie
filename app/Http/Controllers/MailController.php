@@ -8,7 +8,10 @@ use Illuminate\Http\Request;
 class MailController extends Controller
 {
     public function send(Request $request){
-        $send               = MailService::send();
+        $subject            = $request->input('subject');
+        $message            = $request->input('message');
+        $to                 = $request->input('mailTo');
+        $send               = MailService::send($subject,$message,$to);
         return $send;
     }
 }

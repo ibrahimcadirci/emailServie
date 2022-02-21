@@ -9,13 +9,19 @@ class MailService {
     ];
 
 
-    public static function send(){
+    public static function send($subject,$message,$mailTo){
         try {
-            $mail           = new self::$services[0];
-            return $mail->send();
-        } catch (Exception $e) {
-            echo 'Caught exception: '. $e->getMessage() ."\n";
+            $mail           = new self::$services[1];
+            return $mail->send($subject,$message,$mailTo);
+        } catch (\Throwable $e) {
+            return response()->json([
+                "message"       => $e->getMessage()
+            ],500);
+        } catch (\Exception $e) { 
+            // handle $e
+            return response()->json([
+                "message"       => $e->getMessage()
+            ],500);
         }
-
     }
 }
