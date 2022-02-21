@@ -10,18 +10,30 @@ class MailService {
 
 
     public static function send($subject,$message,$mailTo){
-        try {
-            $mail           = new self::$services[1];
-            return $mail->send($subject,$message,$mailTo);
-        } catch (\Throwable $e) {
-            return response()->json([
-                "message"       => $e->getMessage()
-            ],500);
-        } catch (\Exception $e) { 
-            // handle $e
-            return response()->json([
-                "message"       => $e->getMessage()
-            ],500);
+
+        for($i = 0; $i < count(self::$services);$i++){
+            $service           = self::$services[$i];
+            foreach(self::$services as $service){
+                try {
+                    $mail           = new $service;
+                    $response       = $mail->send($subject,$message,$mailTo);
+                    if($response->status() != 202) continue;
+                    return $response;
+        
+                } catch (\Throwable $e) {
+                    if(($i +1) != count(self::$services)) continue;
+                    return response()->json([
+                        "message"       => $e->getMessage()
+                    ],500);
+                } catch (\Exception $e) { 
+                    if(($i +1) != count(self::$services)) continue;
+                    return response()->json([
+                        "message"       => $e->getMessage()
+                    ],500);
+                }
+            }
+
         }
+        
     }
 }
