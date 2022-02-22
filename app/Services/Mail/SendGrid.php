@@ -22,7 +22,7 @@ class SendGrid implements MailServiceInterface {
             if(in_array($response->statusCode(),[200,202])){
                 $responseData       = json_decode($response->body());
                 return response()->json([
-                    "message"       => "transaction successful! e-mail sent."
+                    "message"       => "Mail gönderildi."
                 ],202);
             }else{
                 $responseData       = json_decode($response->body());

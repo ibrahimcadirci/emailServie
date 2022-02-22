@@ -23,12 +23,12 @@ class MailService {
                 } catch (\Throwable $e) {
                     if(($i +1) != count(self::$services)) continue;
                     return response()->json([
-                        "message"       => $e->getMessage()
+                        "message"       => "İsteği şuanda hiçbir serviş işleme alamıyor lütfen daha sonra tekrar deneyin. "
                     ],500);
                 } catch (\Exception $e) { 
                     if(($i +1) != count(self::$services)) continue;
                     return response()->json([
-                        "message"       => $e->getMessage()
+                        "message"       => "İsteği şuanda hiçbir serviş işleme alamıyor lütfen daha sonra tekrar deneyin. "
                     ],500);
                 }
             }
