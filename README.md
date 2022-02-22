@@ -1,64 +1,43 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400"></a></p>
+# E-mail Service Project
+## Yazılım Hakkında
 
-<p align="center">
-<a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+### Görev:
+Mail gönderimi sağlayan bir servsi oluşturulması. İki farklı alt yapı ile çalışan servisin olası bir servisin hata vermesi durumunda diğer servisi kullanarak hatayı kullanıcıya yansıtmayarak diğer servis üzerinden mail gönderilmesi.
 
-## About Laravel
+- Programlama Dili : **PHP**
+- Kullanılan Framework : **Laravel**
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
+## Projeyi Çalıştırma
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+Projeyi clone yaptıktan sonra ilk olarak, komut ekranını açarak aşağıdaki kodu çalıştırmanız gerekiyor. 
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+```
+composer install 
+```
+**Not :** Komutun çalışması için composer'ın bilgisyarınızda kurulu olması gerekmektedir!
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+Test kodlarını çalıştırmak için aşağıdaki komutu çalıştırabilirsiniz.
+```
+php artisan test 
+```
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains over 2000 video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+Projeyi dilerseniz localhost aracılığıyla açabilir yada aşağıdaki komut ile http://127.0.0.1:8000/ adresinde çalıştırabilirsiniz.
+```
+php artisan serve
+```
+**Not :** Burada belirlenen adresin front-end projesinde de doğru bir şekilde ayarlanması gerekmektedir!
 
-## Laravel Sponsors
+**Api Dökümantasyon Linki:**  [Dökümantasyon](https://documenter.getpostman.com/view/11272295/UVkmSHkt).
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the Laravel [Patreon page](https://patreon.com/taylorotwell).
+## Benim eklediğim kısımlar
+Projede kullanılmak üzere bir MAilService sınıfı tanımladım. İşlemlerin hepsi bu servis üzerinden gerçekleştirilecek şekilde ayarlandı. Serviste kullanılacak alt yapılar esnek tutulduğu için istenildiği gibi yeni mail hizmetleri eklenip çıkarılabilir. Mail gönderimi her hizmette farklı olabileceğinden dolayı her hizmet için yeni bir sınıf eklenip MailService sınıfına tanıtılmalıdır. Yeni eklenen sınıflar MailServiceInterface interface'inden implement edilmelidir. 
 
-### Premium Partners
+MailService sınıfımız gelen istekleri işleyip hata alınması durumunda farklı servislerde deneme yapacaktır. Tüm servislerden olumsuz yanıt alınması durumunda kullanıcıya hata mesajı gösterilecektir. 
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Cubet Techno Labs](https://cubettech.com)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[Many](https://www.many.co.uk)**
-- **[Webdock, Fast VPS Hosting](https://www.webdock.io/en)**
-- **[DevSquad](https://devsquad.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[OP.GG](https://op.gg)**
-- **[WebReinvent](https://webreinvent.com/?utm_source=laravel&utm_medium=github&utm_campaign=patreon-sponsors)**
-- **[Lendio](https://lendio.com)**
+### Front-end
+Front-end kısmında html-css-jquery kullandım. Back-end ağırlıklı ilerlemek istediğim için vuejs kullanmadım. Front-end kısmında projeyi indirip direkt çalıştırabilirsiniz..
+[Front-end Projesi](https://github.com/ibrahimcadirci/emailServie-frontend).
 
-## Contributing
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
 
-## Code of Conduct
-
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
-
-## Security Vulnerabilities
-
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
-
-## License
-
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
