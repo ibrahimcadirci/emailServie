@@ -6,7 +6,12 @@ class SendGrid implements MailServiceInterface {
 
     // Gönderen mail adresi
     protected $mailFrom             = "ibrahimh.cadirci@gmail.com";
+    protected $apikey; 
 
+
+    public function __construct(){
+        $this->apikey           = getenv('SENDGRID_API_KEY');
+    }
 
     public function send($subject,$message,$mailTo){
         $email = new Mail(); 
@@ -17,7 +22,7 @@ class SendGrid implements MailServiceInterface {
         $email->addContent(
             "text/html", $message
         );
-        $sendgrid = new \SendGrid(getenv('SENDGRID_API_KEY'));
+        $sendgrid = new \SendGrid($this->apikey);
             $response = $sendgrid->send($email);
             if(in_array($response->statusCode(),[200,202])){
                 $responseData       = json_decode($response->body());

@@ -7,10 +7,15 @@ class MailGun implements MailServiceInterface {
 
     // Gönderen mail adresi
     protected $mailFrom             = "ibrahimh.cadirci@gmail.com";
+    protected $apikey; 
+
+    public function __construct(){
+        $this->apikey           = getenv('MAILGUN_APIKEY');
+    }
 
     public function send($subject,$message,$mailTo){
         // First, instantiate the SDK with your API credentials
-        $mg = MailgunMailgun::create('38eac75b97c291b2d5de6def2e84a075-b2f5ed24-f754bc03'); // For US servers
+        $mg = MailgunMailgun::create($this->apikey); // For US servers
 
         // Now, compose and send your message.
         // $mg->messages()->send($domain, $params);
@@ -21,7 +26,7 @@ class MailGun implements MailServiceInterface {
             'html'    => $message
           ]);
         return response()->json([
-            "message"       => "transaction successful! e-mail sent."
+            "message"       => "Mail gönderildi."
         ],202);
     }
 }
