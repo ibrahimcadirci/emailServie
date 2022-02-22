@@ -16,6 +16,7 @@ composer install
 ```
 **Not :** Komutun çalışması için composer'ın bilgisyarınızda kurulu olması gerekmektedir!
 
+**Mail Servislerinin doğru bir şekilde çalışması için .env dosyasınıza size mail olarak ilettiğim api key'lerini eklemeniz gerekmektedir.**
 
 Test kodlarını çalıştırmak için aşağıdaki komutu çalıştırabilirsiniz.
 ```
