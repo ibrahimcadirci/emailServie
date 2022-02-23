@@ -36,7 +36,7 @@ php artisan serve
 
 **Api Dökümantasyon Linki:**  [Dökümantasyon](https://documenter.getpostman.com/view/11272295/UVkmSHkt).
 
-## Benim eklediğim kısımlar
+## Projenin işleyişi
 Projede kullanılmak üzere bir MAilService sınıfı tanımladım. İşlemlerin hepsi bu servis üzerinden gerçekleştirilecek şekilde ayarlandı. Serviste kullanılacak alt yapılar esnek tutulduğu için istenildiği gibi yeni mail hizmetleri eklenip çıkarılabilir. Mail gönderimi her hizmette farklı olabileceğinden dolayı her hizmet için yeni bir sınıf eklenip MailService sınıfına tanıtılmalıdır. Yeni eklenen sınıflar MailServiceInterface interface'inden implement edilmelidir. 
 
 MailService sınıfımız gelen istekleri işleyip hata alınması durumunda farklı servislerde deneme yapacaktır. Tüm servislerden olumsuz yanıt alınması durumunda kullanıcıya hata mesajı gösterilecektir. 
