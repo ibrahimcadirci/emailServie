@@ -8,18 +8,15 @@ class MailService {
         SendGrid::class
     ];
 
-
     public static function send($subject,$message,$mailTo){
-
         for($i = 0; $i < count(self::$services);$i++){
             $service           = self::$services[$i];
             foreach(self::$services as $service){
                 try {
                     $mail           = new $service;
                     $response       = $mail->send($subject,$message,$mailTo);
-                    if($response->status() != 202) continue;
+                    if($response->status() != 202 && ($i +1) != count(self::$services)) continue;
                     return $response;
-        
                 } catch (\Throwable $e) {
                     if(($i +1) != count(self::$services)) continue;
                     return response()->json([

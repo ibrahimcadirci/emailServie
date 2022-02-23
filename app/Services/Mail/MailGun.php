@@ -19,7 +19,7 @@ class MailGun implements MailServiceInterface {
 
         // Now, compose and send your message.
         // $mg->messages()->send($domain, $params);
-        $mg->messages()->send('sandbox89515e3cc11f47249f0224a77c99dedc.mailgun.org', [
+        $mg->messages()->send('sandbox380f340ca353408b9814ba25a8b7be7d.mailgun.org', [
             'from'    => $this->mailFrom,
             'to'      => $mailTo,
             'subject' => $subject,
